@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Koko's Friend</title>
+
+    <link rel="stylesheet" href="2.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-koko">🐨</div>
+            <div>
+                <h2>Koko's Friend</h2>
+                <span>Stay accountable</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <button class="nav-btn active" data-page="dashboard">
+                🏠 Dashboard
+            </button>
+
+            <button class="nav-btn" data-page="schedule">
+                📅 Schedule
+            </button>
+
+            <button class="nav-btn" data-page="tasks">
+                ✅ Tasks
+            </button>
+
+            <button class="nav-btn" data-page="timer">
+                ⏱️ Work Together
+            </button>
+
+            <button class="nav-btn" data-page="punishments">
+                🎴 Punishments
+            </button>
+
+            <button class="nav-btn" data-page="koko">
+                🐨 Koko
+            </button>
+
+        </nav>
+
+        <div class="friend-box">
+
+            <p>Your accountability friend</p>
+
+            <div class="friend">
+
+                <div class="avatar">
+                    👤
+                </div>
+
+                <div>
+                    <strong id="friendNameSide">
+                        No friend yet
+                    </strong>
+
+                    <small id="friendStatus">
+                        Waiting to connect
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+                <button id="mobileMenu" class="mobile-menu">
+                    ☰
+                </button>
+
+                <h1 id="pageTitle">
+                    Good day! 👋
+                </h1>
+
+                <p id="pageSubtitle">
+                    Let's keep each other accountable.
+                </p>
+            </div>
+
+            <div class="top-actions">
+
+                <div class="streak">
+                    🔥
+                    <strong id="streakNumber">
+                        0
+                    </strong>
+                    day streak
+                </div>
+
+                <div class="profile">
+                    👤
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard" class="page active">
+
+            <div class="hero">
+
+                <div>
+
+                    <span class="badge">
+                        ACCOUNTABILITY PARTNER
+                    </span>
+
+                    <h2>
+                        Get your work done<br>
+                        <span>together.</span>
+                    </h2>
+
+                    <p>
+                        Your friend reminds you.
+                        You remind your friend.
+                        Koko grows when you both succeed.
+                    </p>
+
+                    <button class="primary-btn" id="addTaskDashboard">
+                        + Add today's task
+                    </button>
+
+                </div>
+
+                <div class="koko-hero">
+                    <div id="kokoEmojiHero">
+                        🐨
+                    </div>
+
+                    <span id="kokoLevelHero">
+                        Koko • Level 1
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- FRIEND CONNECTION -->
+
+            <div class="card connection-card">
+
+                <div>
+
+                    <span class="section-label">
+                        FRIEND CONNECTION
+                    </span>
+
+                    <h3 id="connectionTitle">
+                        Connect with your friend
+                    </h3>
+
+                    <p id="connectionText">
+                        Create an invite code and give it to your accountability partner.
+                    </p>
+
+                </div>
+
+                <div class="connection-actions">
+
+                    <button class="secondary-btn" id="createInvite">
+                        Create Invite Code
+                    </button>
+
+                    <button class="secondary-btn" id="joinFriend">
+                        Enter Friend Code
+                    </button>
+
+                </div>
+
+                <div id="inviteDisplay" class="invite-display hidden">
+
+                    <span>Your invite code</span>
+
+                    <strong id="inviteCode">
+                        ------
+                    </strong>
+
+                    <button id="copyInvite">
+                        Copy
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- DASHBOARD GRID -->
+
+            <div class="dashboard-grid">
+
+                <!-- TODAY -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="section-label">
+                                TODAY
+                            </span>
+
+                            <h3>
+                                Today's tasks
+                            </h3>
+                        </div>
+
+                        <span id="taskCount">
+                            0 tasks
+                        </span>
+
+                    </div>
+
+                    <div id="todayTasks">
+
+                        <div class="empty-state">
+                            No tasks yet.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REMINDER -->
+
+                <div class="card reminder-card">
+
+                    <span class="section-label">
+                        NEXT REMINDER
+                    </span>
+
+                    <h3 id="nextReminder">
+                        No reminder scheduled
+                    </h3>
+
+                    <div class="reminder-time" id="nextReminderTime">
+                        --
+                    </div>
+
+                    <button class="primary-btn" id="startReminder">
+                        🔔 Test Reminder
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- DAILY PROGRESS -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="section-label">
+                            DAILY PROGRESS
+                        </span>
+
+                        <h3>
+                            Keep the streak alive
+                        </h3>
+                    </div>
+
+                    <strong id="progressPercent">
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div id="progressFill"></div>
+
+                </div>
+
+                <p id="progressText">
+                    Complete your tasks to help Koko grow!
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCHEDULE -->
+
+        <section id="schedule" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <span class="section-label">
+                        CALENDAR
+                    </span>
+
+                    <h2>
+                        Our Schedule
+                    </h2>
+                </div>
+
+                <button class="primary-btn" id="addScheduleBtn">
+                    + Add Schedule
+                </button>
+
+            </div>
+
+
+            <div class="calendar-card card">
+
+                <div class="calendar-top">
+
+                    <button id="previousDay">
+                        ←
+                    </button>
+
+                    <h3 id="calendarDate">
+                        Today
+                    </h3>
+
+                    <button id="nextDay">
+                        →
+                    </button>
+
+                </div>
+
+                <div id="scheduleList">
+
+                    <div class="empty-state">
+                        Nothing scheduled.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TASKS -->
+
+        <section id="tasks" class="page">
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        ACCOUNTABILITY
+                    </span>
+
+                    <h2>
+                        Tasks
+                    </h2>
+
+                </div>
+
+                <button class="primary-btn" id="addTaskBtn">
+                    + Add Task
+                </button>
+
+            </div>
+
+
+            <div class="task-filters">
+
+                <button class="filter active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter" data-filter="mine">
+                    My Tasks
+                </button>
+
+                <button class="filter" data-filter="friend">
+                    Friend's Tasks
+                </button>
+
+                <button class="filter" data-filter="completed">
+                    Completed
+                </button>
+
+            </div>
+
+
+            <div id="allTasks" class="tasks-list"></div>
+
+        </section>
+
+
+        <!-- WORK TIMER -->
+
+        <section id="timer" class="page">
+
+            <div class="timer-page">
+
+                <span class="section-label">
+                    STUDY TOGETHER
+                </span>
+
+                <h2>
+                    Work Together
+                </h2>
+
+                <p>
+                    Call your friend and start working together.
+                </p>
+
+
+                <div class="big-timer">
+
+                    <div id="timerDisplay">
+                        00:00:00
+                    </div>
+
+                    <div class="timer-status" id="timerStatus">
+                        Ready to work
+                    </div>
+
+                </div>
+
+
+                <div class="timer-controls">
+
+                    <button class="primary-btn" id="startTimer">
+                        ▶ Start
+                    </button>
+
+                    <button class="secondary-btn" id="pauseTimer">
+                        ⏸ Pause
+                    </button>
+
+                    <button class="secondary-btn" id="resetTimer">
+                        ↻ Reset
+                    </button>
+
+                </div>
+
+
+                <div class="call-card card">
+
+                    <div class="call-icon">
+                        📞
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Work together
+                        </h3>
+
+                        <p>
+                            Start a call with your accountability partner.
+                        </p>
+
+                    </div>
+
+                    <button class="primary-btn" id="callFriend">
+                        📞 Call
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PUNISHMENTS -->
+
+        <section id="punishments" class="page">
+
+            <div class="page-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        CONSEQUENCES
+                    </span>
+
+                    <h2>
+                        Punishment Cards
+                    </h2>
+
+                    <p>
+                        Didn't complete your responsibilities?
+                        Draw a card.
+                    </p>
+
+                </div>
+
+                <button class="primary-btn" id="drawPunishment">
+                    🎴 Draw Card
+                </button>
+
+            </div>
+
+
+            <div id="punishmentResult" class="punishment-result hidden">
+
+                <div class="punishment-card">
+
+                    <span>
+                        YOUR PUNISHMENT
+                    </span>
+
+                    <div id="punishmentNumber">
+                        #1
+                    </div>
+
+                    <h2 id="punishmentText">
+                        --
+                    </h2>
+
+                    <button class="secondary-btn" id="acceptPunishment">
+                        I accept 😭
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="punishment-grid" id="punishmentGrid"></div>
+
+        </section>
+
+
+        <!-- KOKO -->
+
+        <section id="koko" class="page">
+
+            <div class="koko-page">
+
+                <span class="section-label">
+                    YOUR ACCOUNTABILITY PET
+                </span>
+
+                <h2>
+                    Meet Koko 🐨
+                </h2>
+
+                <p>
+                    Koko grows whenever you and your friend successfully complete your responsibilities.
+                </p>
+
+
+                <div class="koko-display card">
+
+                    <div class="big-koko" id="bigKoko">
+                        🐨
+                    </div>
+
+                    <h2 id="kokoLevel">
+                        Level 1
+                    </h2>
+
+                    <p id="kokoDescription">
+                        Baby Koko
+                    </p>
+
+
+                    <div class="koko-xp">
+
+                        <div class="xp-header">
+
+                            <span>
+                                XP
+                            </span>
+
+                            <strong id="xpText">
+                                0 / 100
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div id="xpFill"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="koko-stats">
+
+                    <div class="card stat">
+
+                        <strong id="totalCompleted">
+                            0
+                        </strong>
+
+                        <span>
+                            Tasks completed
+                        </span>
+
+                    </div>
+
+                    <div class="card stat">
+
+                        <strong id="currentStreak">
+                            0
+                        </strong>
+
+                        <span>
+                            Day streak
+                        </span>
+
+                    </div>
+
+                    <div class="card stat">
+
+                        <strong id="remindersDone">
+                            0
+                        </strong>
+
+                        <span>
+                            Reminders completed
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- TASK MODAL -->
+
+<div class="modal hidden" id="taskModal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" data-close="taskModal">
+            ×
+        </button>
+
+        <h2>
+            Add a Task
+        </h2>
+
+        <p>
+            Add something you or your friend needs to accomplish.
+        </p>
+
+
+        <label>
+            Task
+        </label>
+
+        <input
+            type="text"
+            id="taskInput"
+            placeholder="e.g. Study Biology"
+        >
+
+
+        <label>
+            Person responsible
+        </label>
+
+        <select id="taskOwner">
+
+            <option value="me">
+                Me
+            </option>
+
+            <option value="friend">
+                My Friend
+            </option>
+
+        </select>
+
+
+        <label>
+            Due time
+        </label>
+
+        <input
+            type="time"
+            id="taskTime"
+        >
+
+
+        <button class="primary-btn full" id="saveTask">
+            Add Task
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SCHEDULE MODAL -->
+
+<div class="modal hidden" id="scheduleModal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" data-close="scheduleModal">
+            ×
+        </button>
+
+        <h2>
+            Add Schedule
+        </h2>
+
+
+        <label>
+            Activity
+        </label>
+
+        <input
+            type="text"
+            id="scheduleInput"
+            placeholder="e.g. Math Review"
+        >
+
+
+        <label>
+            Time
+        </label>
+
+        <input
+            type="time"
+            id="scheduleTime"
+        >
+
+
+        <label>
+            Person
+        </label>
+
+        <select id="scheduleOwner">
+
+            <option value="me">
+                Me
+            </option>
+
+            <option value="friend">
+                My Friend
+            </option>
+
+        </select>
+
+
+        <button class="primary-btn full" id="saveSchedule">
+            Add Schedule
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FRIEND CODE MODAL -->
+
+<div class="modal hidden" id="friendModal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" data-close="friendModal">
+            ×
+        </button>
+
+        <h2>
+            Connect Friend
+        </h2>
+
+        <p>
+            Enter your friend's six-character invite code.
+        </p>
+
+
+        <input
+            type="text"
+            id="friendCodeInput"
+            placeholder="ABC123"
+            maxlength="6"
+        >
+
+
+        <button class="primary-btn full" id="connectFriend">
+            Connect
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- PROOF MODAL -->
+
+<div class="modal hidden" id="proofModal">
+
+    <div class="modal-content">
+
+        <button class="close-modal" data-close="proofModal">
+            ×
+        </button>
+
+        <h2>
+            Show Proof 📸
+        </h2>
+
+        <p>
+            Show proof that you completed your task.
+        </p>
+
+        <input
+            type="file"
+            id="proofInput"
+            accept="image/*"
+        >
+
+        <button class="primary-btn full" id="submitProof">
+            Submit Proof
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- REMINDER MODAL -->
+
+<div class="modal hidden" id="reminderModal">
+
+    <div class="modal-content reminder-modal">
+
+        <div class="alarm-icon">
+            🔔
+        </div>
+
+        <h2>
+            ACCOUNTABILITY CHECK!
+        </h2>
+
+        <p id="reminderMessage">
+            Your friend needs to start working!
+        </p>
+
+        <div class="five-minute">
+
+            <span>
+                Proof required in:
+            </span>
+
+            <strong id="proofCountdown">
+                05:00
+            </strong>
+
+        </div>
+
+        <button class="primary-btn full" id="showProof">
+            📸 Show Proof
+        </button>
+
+        <button class="secondary-btn full" id="dismissReminder">
+            Stop Reminder
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="3.js"></script>
+
+</body>
+</html>
